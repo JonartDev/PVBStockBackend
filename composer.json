@@ -3,6 +3,6 @@
   "description": "Simple PHP proxy for PVB Stock data",
   "require": {},
   "scripts": {
-    "start": "php -S 0.0.0.0:10000"
+    "start": "php -S 0.0.0.0:10000 proxy.php"
   }
 }
