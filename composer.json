@@ -1,5 +1,8 @@
 {
   "name": "pvb/stock-proxy",
   "description": "Simple PHP proxy for PVB Stock data",
-  "require": {}
+  "require": {},
+  "scripts": {
+    "start": "php -S 0.0.0.0:10000"
+  }
 }
