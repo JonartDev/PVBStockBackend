@@ -4,11 +4,11 @@ FROM php:8.2-cli
 # Set working directory inside the container
 WORKDIR /app
 
-# Copy all project files into the container
-COPY . /app
+# Copy ALL files from your project into the container
+COPY . .
 
-# Expose port 10000 for Render
+# Expose Render port (Render uses dynamic ports internally, default 10000 for yours)
 EXPOSE 10000
 
-# Start PHP's built-in server to serve ALL files in /app
+# Run PHP's built-in web server serving all PHP files
 CMD ["php", "-S", "0.0.0.0:10000", "-t", "/app"]
