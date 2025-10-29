@@ -10,5 +10,5 @@ COPY . /app
 # Expose port 10000 for Render
 EXPOSE 10000
 
-# Start PHP's built-in server serving proxy.php
-CMD ["php", "-S", "0.0.0.0:10000", "proxy.php"]
+# Start PHP's built-in server to serve ALL files in /app
+CMD ["php", "-S", "0.0.0.0:10000", "-t", "/app"]
