@@ -1,4 +1,18 @@
 <?php
+// === Allowed website origin ===
+// ✅ change this to your real site domain:
+$allowed_origin = "https://jonartdev.github.io";
+
+// === Check the Origin header ===
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+if ($origin === $allowed_origin) {
+    header("Access-Control-Allow-Origin: $allowed_origin");
+} else {
+    http_response_code(403);
+    echo json_encode(["error" => "Forbidden: Invalid origin"]);
+    exit();
+}
+
 // === CORS headers ===
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
