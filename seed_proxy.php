@@ -1,28 +1,38 @@
 <?php
-// === Allowed website origin ===
+// === Allowed website origins ===
 $allowed_origins = [
     "https://jonartdev.github.io",
-    "https://pages-6zfpxkfkv5du.tcloudbaseapp.com", // ✅ Tencent Cloud Pages domain
-    "https://pvbstock.pages.dev", // (optional if you move later to Cloudflare Pages),
-    "https://plants-vs-brainbot-stock-notifier-qnukbpxw6u.edgeone.app/"
-
+    "https://pages-6zfpxkfkv5du.tcloudbaseapp.com", // ✅ Tencent Cloud Pages
+    "https://pvbstock.pages.dev",                    // optional (Cloudflare Pages)
+    "https://plants-vs-brainbot-stock-notifier-qnukbpxw6u.edgeone.app/" // optional EdgeOne
 ];
 
 // === Check the Origin header ===
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+
+// If no Origin header (like from direct browser load or server request), use the first allowed for safety
+if (!$origin) {
+    $origin = $allowed_origins[0];
+}
+
+// Allow only the whitelisted origins
 if (in_array($origin, $allowed_origins)) {
     header("Access-Control-Allow-Origin: $origin");
 } else {
     http_response_code(403);
-    echo json_encode(["error" => "Forbidden: You're not able to acces this site", "received_origin" => $origin]);
+    echo json_encode([
+        "error" => "Forbidden: You're not able to access this site",
+        "received_origin" => $origin
+    ]);
     exit();
 }
 
+// === CORS headers ===
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
 header("Content-Type: application/json");
 
-// === Handle preflight OPTIONS request ===
+// === Handle preflight OPTIONS requests ===
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     http_response_code(200);
     exit();
