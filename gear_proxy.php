@@ -1,18 +1,22 @@
 <?php
 // === Allowed website origin ===
-// ✅ change this to your real site domain:
-$allowed_origin = "https://jonartdev.github.io";
+$allowed_origins = [
+    "https://jonartdev.github.io",
+    "https://pages-6zfpxkfkv5du.tcloudbaseapp.com", // ✅ Tencent Cloud Pages domain
+    "https://pvbstock.pages.dev", // (optional if you move later to Cloudflare Pages),
+    "https://plants-vs-brainbot-stock-notifier-qnukbpxw6u.edgeone.app/"
+
+];
 
 // === Check the Origin header ===
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
-if ($origin === $allowed_origin) {
-    header("Access-Control-Allow-Origin: $allowed_origin");
+if (in_array($origin, $allowed_origins)) {
+    header("Access-Control-Allow-Origin: $origin");
 } else {
     http_response_code(403);
-    echo json_encode(["error" => "Forbidden: Invalid origin"]);
+    echo json_encode(["error" => "Forbidden: You're not able to acces this site", "received_origin" => $origin]);
     exit();
 }
-
 // === CORS headers ===
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
