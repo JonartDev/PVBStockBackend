@@ -2,10 +2,12 @@
 // === Allowed website origins ===
 $allowed_origins = [
     "https://jonartdev.github.io",
-    "https://pages-6zfpxkfkv5du.tcloudbaseapp.com", // ✅ Tencent Cloud Pages
-    "https://pvbstock.pages.dev",                    // optional (Cloudflare Pages)
-    "https://plants-vs-brainbot-stock-notifier-qnukbpxw6u.edgeone.app/" // optional EdgeOne
+    "https://pages-6zfpxkf5du.tcloudbaseapp.com",
+    "https://pvbstock.pages.dev",
+    "https://plants-vs-brainbot-stock-notifier-qnukbpxw6u.edgeone.app/",
+    "https://plants-vs-brainbot-stock-notifier-379z5rmtjh.edgeone.app/" // ✅ new working domain
 ];
+
 
 // === Check the Origin header ===
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
