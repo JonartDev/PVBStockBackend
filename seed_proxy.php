@@ -5,7 +5,8 @@ $allowed_origins = [
     "https://pages-6zfpxkf5du.tcloudbaseapp.com",
     "https://pvbstock.pages.dev",
     "https://plants-vs-brainbot-stock-notifier-qnukbpxw6u.edgeone.app/",
-    "https://plants-vs-brainbot-stock-notifier-379z5rmtjh.edgeone.app/" // ✅ new working domain
+    "https://plants-vs-brainbot-stock-notifier-379z5rmtjh.edgeone.app/", // ✅ new working domain,
+    "https://plants-vs-brainbot-stock-notifier-g8ru83ateb.edgeone.app/"
 ];
 
 
