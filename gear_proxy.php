@@ -1,33 +1,33 @@
 <?php
 // === Allowed website origins ===
-$allowed_origins = [
-    "https://jonartdev.github.io",
-    "https://pages-6zfpxkf5du.tcloudbaseapp.com",
-    "https://pvbstock.pages.dev",
-    "https://plants-vs-brainbot-stock-notifier-qnukbpxw6u.edgeone.app/",
-    "https://plants-vs-brainbot-stock-notifier-379z5rmtjh.edgeone.app/", // ✅ new working domain,
-    "https://plants-vs-brainbot-stock-notifier-g8ru83ateb.edgeone.app/"
-];
+// $allowed_origins = [
+//     "https://jonartdev.github.io",
+//     "https://pages-6zfpxkf5du.tcloudbaseapp.com",
+//     "https://pvbstock.pages.dev",
+//     "https://plants-vs-brainbot-stock-notifier-qnukbpxw6u.edgeone.app/",
+//     "https://plants-vs-brainbot-stock-notifier-379z5rmtjh.edgeone.app/", // ✅ new working domain,
+//     "https://plants-vs-brainbot-stock-notifier-g8ru83ateb.edgeone.app/"
+// ];
 
 
-// === Check the Origin header ===
-$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+// // === Check the Origin header ===
+// $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
 
-if (!$origin) {
-    // Allow local testing or direct access
-    $origin = $allowed_origins[0];
-}
+// if (!$origin) {
+//     // Allow local testing or direct access
+//     $origin = $allowed_origins[0];
+// }
 
-if (in_array($origin, $allowed_origins)) {
-    header("Access-Control-Allow-Origin: $origin");
-} else {
-    http_response_code(403);
-    echo json_encode([
-        "error" => "Forbidden: You're not able to access this site",
-        "received_origin" => $origin
-    ]);
-    exit();
-}
+// if (in_array($origin, $allowed_origins)) {
+//     header("Access-Control-Allow-Origin: $origin");
+// } else {
+//     http_response_code(403);
+//     echo json_encode([
+//         "error" => "Forbidden: You're not able to access this site",
+//         "received_origin" => $origin
+//     ]);
+//     exit();
+// }
 
 // === CORS headers ===
 header("Access-Control-Allow-Origin: *"); // or specify your domain
